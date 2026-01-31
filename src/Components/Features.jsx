@@ -8,43 +8,45 @@ import img5 from "./Images/5.png";
 
 const services = [
   {
-    id: "01",
-    pill: "BACKEND · DATABASE",
-    label: "SERVICE 01 · BACKEND & DATABASE DEVELOPMENT",
-    titleMain: "SECURE, SCALABLE",
-    titleAccent: "BACKEND FOUNDATIONS",
-    titleSub: "BUILT TO HANDLE REAL‑WORLD LOAD.",
-    image: img1,
-    description:
-      "We design and build backend systems that are clean, predictable and production‑ready — so your product stays stable even as usage grows.",
-    points: [
-      "Database design & development aligned with your business logic.",
-      "User authentication with secure role management and permissions.",
-      "Reliable data storage, backups and structured access.",
-      "Backend APIs using Django or Node.js best practices.",
-      "Secure, scalable architecture ready for production load.",
-    ],
-    gradient: "from-cyan-500/30 via-sky-500/10 to-purple-500/25",
-  },
-  {
-    id: "02",
-    pill: "INTEGRATIONS · LAUNCH",
-    label: "SERVICE 02 · INTEGRATIONS & LAUNCH SETUP",
-    titleMain: "SMOOTH",
-    titleAccent: "INFRASTRUCTURE & INTEGRATIONS",
-    titleSub: "SO YOUR PRODUCT IS READY TO GO LIVE.",
-    image: img2,
-    description:
-      "We handle the technical plumbing behind your launch — from domains and SSL to payments and third‑party APIs — so everything works together from day one.",
-    points: [
-      "Domain, hosting and SSL setup for live environments.",
-      "Payment gateway integration and transaction flows.",
-      "Third‑party API integrations (maps, SMS, email, etc.).",
-      "WhatsApp, email and CRM integrations for communication.",
-      "SEO‑friendly technical setup to support better search ranking.",
-    ],
-    gradient: "from-purple-500/25 via-sky-500/10 to-cyan-500/25",
-  },
+  id: "01",
+  pill: "WEB · DEVELOPMENT",
+  label: "SERVICE 01 · WEB DEVELOPMENT SERVICES",
+  titleMain: "MODERN, RESPONSIVE",
+  titleAccent: "WEBSITE SOLUTIONS",
+  titleSub: "DESIGNED TO CONVERT AND SCALE.",
+  image: img1,
+  description:
+    "We create fast, responsive and SEO-friendly websites tailored to your business goals — from custom builds to full-scale e-commerce solutions.",
+  points: [
+    "Custom website development based on your brand and requirements.",
+    "Responsive design for mobile, tablet and desktop devices.",
+    "E-commerce website development with secure payment integration.",
+    "SEO optimization for better visibility and search rankings.",
+    "Ongoing website maintenance, updates and performance improvements.",
+  ],
+  gradient: "from-orange-500/30 via-amber-500/15 to-gray-500/20",
+}
+,
+ {
+  id: "02",
+  pill: "UI/UX · E-COMMERCE",
+  label: "SERVICE 02 · DIGITAL PRESENCE & UI/UX DESIGN",
+  titleMain: "BUILD YOUR",
+  titleAccent: "DIGITAL PRESENCE",
+  titleSub: "DESIGNED TO ENGAGE, BUILT TO PERFORM.",
+  image: img2,
+  description:
+    "We craft complete digital experiences — from UI/UX design to Shopify and e-commerce development — ensuring your brand looks professional, performs fast and converts users into customers.",
+  points: [
+    "UI/UX design focused on usability, clarity and user engagement.",
+    "Shopify store design and development tailored to your brand.",
+    "Custom e-commerce store development with smooth user journeys.",
+    "Performance and speed optimization for faster load times.",
+    "End-to-end development ensuring consistency across all platforms.",
+  ],
+  gradient: "from-orange-500/30 via-amber-500/15 to-gray-500/20",
+}
+,
   {
     id: "03",
     pill: "ERP · CRM",
@@ -65,43 +67,48 @@ const services = [
     gradient: "from-purple-500/30 via-sky-500/10 to-cyan-500/25",
   },
   {
-    id: "04",
-    pill: "SUPPORT · GROWTH",
-    label: "SERVICE 04 · ONGOING SUPPORT & OPTIMISATION",
-    titleMain: "CONTINUOUS",
-    titleAccent: "CARE, UPDATES & IMPROVEMENTS",
-    titleSub: "LONG AFTER LAUNCH DAY IS OVER.",
-    image: img4,
-    description:
-      "We don’t disappear after deployment. We stay with you, maintaining and improving your product as your business and users evolve.",
-    points: [
-      "Regular website and backend updates.",
-      "New feature development and enhancements.",
-      "Bug fixes, performance tuning and refactoring.",
-      "Security checks and best‑practice improvements.",
-      "Dedicated post‑launch technical support.",
-    ],
-    gradient: "from-cyan-500/25 via-emerald-500/10 to-sky-500/25",
-  },
+  id: "04",
+  pill: "BACKEND · SUPPORT",
+  label: "SERVICE 04 · BACKEND, INTEGRATIONS & ONGOING SUPPORT",
+  titleMain: "RELIABLE",
+  titleAccent: "SYSTEMS & CONTINUOUS SUPPORT",
+  titleSub: "POWERING YOUR PRODUCT BEHIND THE SCENES.",
+  image: img4,
+  description:
+    "We build, integrate and maintain robust backend systems and databases — ensuring seamless integrations, long-term stability and continuous technical support as your product grows.",
+  points: [
+    "Backend development with scalable and secure architecture.",
+    "Database design, optimization and structured data management.",
+    "Third-party integrations and system setup (APIs, payments, tools).",
+    "Ongoing support, updates and performance optimization.",
+    "Monitoring, security enhancements and long-term maintenance.",
+  ],
+  gradient: "from-slate-500/30 via-cyan-500/10 to-emerald-500/25",
+}
+,
   {
-    id: "05",
-    pill: "PERFORMANCE · SECURITY",
-    label: "SERVICE 05 · PERFORMANCE, SECURITY & ANALYTICS",
-    titleMain: "HIGH‑PERFORMANCE",
-    titleAccent: "SECURITY & MONITORING",
-    titleSub: "SO YOUR PRODUCT STAYS FAST AND PROTECTED.",
-    image: img5,
-    description:
-      "We keep your product fast, secure and measurable — from performance tuning and security hardening to analytics that show you what’s really happening.",
-    points: [
-      "Performance audits and response‑time optimisation.",
-      "Caching, CDN and database tuning for speed.",
-      "Security hardening, vulnerability checks and patches.",
-      "Uptime and error monitoring with smart alerts.",
-      "Tracking, dashboards and analytics for better decisions.",
-    ],
-    gradient: "from-emerald-500/25 via-cyan-500/10 to-sky-500/25",
-  },
+  id: "05",
+  pill: "BILLING · AUTOMATION",
+  label: "SERVICE 05 · CUSTOM BILLING & INVOICING SOFTWARE",
+  titleMain: "SMART",
+  titleAccent: "BILLING & FINANCIAL WORKFLOWS",
+  titleSub: "BUILT FOR ACCURACY, COMPLIANCE AND SCALE.",
+  image: img5,
+  description:
+    "We design and develop custom billing and invoicing systems tailored to your business — GST-ready, automated and easy to manage, with full visibility into payments, reports and workflows.",
+  points: [
+    "Custom billing & invoicing software built for your operations.",
+    "GST-ready invoices with CGST, SGST and IGST compliance.",
+    "Customer and vendor billing dashboards with full control.",
+    "Invoice history, payment tracking and outstanding management.",
+    "Tax reports, sales reports and downloadable financial records.",
+    "Role-based access control and permission management.",
+    "Export invoices and reports in PDF and Excel formats.",
+    "Workflow automation for billing approvals and finance processes.",
+  ],
+  gradient: "from-emerald-500/30 via-cyan-500/10 to-sky-500/25",
+}
+,
 ];
 
 const Features = () => {

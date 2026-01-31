@@ -49,7 +49,7 @@ export default function Contact() {
           <div className="relative overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/70 p-[1px]">
             <div className="relative h-full rounded-2xl bg-gradient-to-br from-slate-950/95 via-slate-950/90 to-slate-900/80 p-6 sm:p-7">
               <h3 className="text-lg font-semibold text-slate-50">
-                Direct Contact
+                DIRECT CONTACT
               </h3>
               <p className="mt-2 text-sm text-slate-400">
                 For business inquiries, project discussions, or consultations,
@@ -118,7 +118,7 @@ export default function Contact() {
           <div className="relative overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/70 p-[1px]">
             <div className="relative h-full rounded-2xl bg-gradient-to-br from-slate-950/95 via-slate-950/90 to-slate-900/80 p-6 sm:p-7">
               <h3 className="text-lg font-semibold text-slate-50">
-                Send Us a Message
+                SEND US A MESSAGE
               </h3>
               <p className="mt-2 text-sm text-slate-400">
                 Share a brief overview of your project. We will get back to you
