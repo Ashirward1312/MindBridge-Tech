@@ -119,3 +119,28 @@ body {
   overflow-x: hidden;
   background-color: #000;
 }
+
+.marquee {
+  position: relative;
+  overflow: hidden;
+}
+
+.marquee__inner {
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+  animation: marquee-left 40s linear infinite;
+}
+
+.marquee:hover .marquee__inner {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
