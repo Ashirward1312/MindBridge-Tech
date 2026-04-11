@@ -82,34 +82,11 @@ export default function AboutSection() {
               Our Team
             </p>
 
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm md:text-base">
-              <li className="rounded-xl border border-cyan-500/20 bg-white/5 px-4 py-3 backdrop-blur-sm drop-shadow-[0_0_12px_rgba(34,211,238,0.25)]">
-                <p className="text-cyan-300 font-semibold">
-                  Richa Tiwari
-                </p>
-                <p className="text-slate-400 text-xs mt-1">
-                  Full-Stack Developer — 1.5 years of experience
-                </p>
-              </li>
-
-              <li className="rounded-xl border border-blue-500/20 bg-white/5 px-4 py-3 backdrop-blur-sm drop-shadow-[0_0_12px_rgba(59,130,246,0.25)]">
-                <p className="text-blue-300 font-semibold">
-                  Himanshu Sahu
-                </p>
-                <p className="text-slate-400 text-xs mt-1">
-                  Full-Stack Developer — 1.5 years of experience
-                </p>
-              </li>
-
-              <li className="rounded-xl border border-purple-500/25 bg-white/5 px-4 py-3 backdrop-blur-sm drop-shadow-[0_0_12px_rgba(168,85,247,0.35)] md:col-span-2">
-                <p className="text-purple-300 font-semibold">
-                  Ashirwad Sharma
-                </p>
-                <p className="text-slate-400 text-xs mt-1">
-                  Frontend Developer &amp; Next-Gen 3D Animator — 1 year of experience
-                </p>
-              </li>
-            </ul>
+            <div className="rounded-2xl border border-cyan-500/20 bg-white/5 p-6 md:p-8 backdrop-blur-md drop-shadow-[0_0_25px_rgba(34,211,238,0.15)]">
+              <p className="text-slate-200 text-sm md:text-base leading-relaxed italic border-l-4 border-cyan-400 pl-4">
+                "We are powered by a multi-disciplinary team of experts dedicated to transforming your vision into digital excellence. Our mission is to accelerate your business growth by engineering scalable, high-performance solutions that dominate the digital landscape."
+              </p>
+            </div>
 
             <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-2xl">
               Together, we are MindBridge Tech—a team that enjoys the journey as much as the destination,

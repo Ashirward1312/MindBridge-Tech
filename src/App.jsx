@@ -1,5 +1,5 @@
-// src/App.jsx
 import React, { useEffect, useState } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Hero from "./Components/Hero.jsx";
 import Nav from "./Components/Nav.jsx";
 import Features from "./Components/Features.jsx";
@@ -9,18 +9,40 @@ import About from "./Components/About.jsx";
 import Footer from "./Components/Footer.jsx";
 import PortfolioSection from "./Components/Portfolio.jsx";
 import Contact from "./Components/Contact.jsx";
+import Mission from "./Components/Mission.jsx";
+import Vision from "./Components/Vission.jsx";
+import FAQ from "./Components/FAQ.jsx";
+import WhatsAppFloating from "./Components/WhatsAppFloating.jsx";
+import { useLocation } from "react-router-dom";
+
+function ScrollToTop({ lenis }) {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+      lenis.resize();
+    }
+  }, [pathname, lenis]);
+
+  return null;
+}
 
 function App() {
   const [cursorPos, setCursorPos] = useState({ x: -100, y: -100 });
+  const [lenisInstance, setLenisInstance] = useState(null);
 
   useEffect(() => {
     // Lenis smooth scroll init
     const lenis = new Lenis({
-      duration: 1.1,      // scroll ka smoothness (1–1.5 behtareen)
-      easing: (t) => 1 - Math.pow(1 - t, 3), // smooth cubic easing
+      duration: 1.1,      
+      easing: (t) => 1 - Math.pow(1 - t, 3), 
       smoothWheel: true,
-      smoothTouch: false, // mobile pe normal rehne do
+      smoothTouch: false, 
     });
+
+    setLenisInstance(lenis);
 
     function raf(time) {
       lenis.raf(time);
@@ -28,6 +50,11 @@ function App() {
     }
 
     requestAnimationFrame(raf);
+
+    const resizeObserver = new ResizeObserver(() => {
+      lenis.resize();
+    });
+    resizeObserver.observe(document.body);
 
     // Mouse move for UFO cursor
     const handleMouseMove = (e) => {
@@ -38,19 +65,37 @@ function App() {
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      resizeObserver.disconnect();
       lenis.destroy();
     };
   }, []);
 
   return (
     <>
+      <ScrollToTop lenis={lenisInstance} />
       <Nav />
-      <Hero />
-      <Features />
-      <PortfolioSection />
-      <About />
-      <Contact />
+      <main className="pt-16 min-h-screen">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Hero />
+                <Mission />
+                <Vision />
+                <FAQ />
+              </>
+            }
+          />
+          <Route path="/services" element={<Features />} />
+          <Route path="/portfolio" element={<PortfolioSection />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </main>
       <Footer />
+      <WhatsAppFloating />
 
 
       {/* Global UFO cursor */}

@@ -1,30 +1,16 @@
-// src/components/Navbar.jsx
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const NAV_ITEMS = [
-  { id: "home", label: "Home" },
-  { id: "services", label: "Services" },
-  { id: "portfolio", label: "Portfolio" },
-  { id: "about", label: "About" },
-  { id: "contact", label: "Contact" },
+  { to: "/", label: "Home", end: true },
+  { to: "/services", label: "Services" },
+  { to: "/portfolio", label: "Portfolio" },
+  { to: "/about", label: "About" },
+  { to: "/contact", label: "Contact" },
 ];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-
-  // Smooth scroll with offset (fixed navbar ke neeche content chipke na isliye)
-  const handleScroll = (e, targetId) => {
-    e.preventDefault();
-    const section = document.getElementById(targetId);
-    if (!section) return;
-
-    const yOffset = -80; // approx navbar height
-    const y =
-      section.getBoundingClientRect().top + window.pageYOffset + yOffset;
-
-    window.scrollTo({ top: y, behavior: "smooth" });
-    setOpen(false); // mobile menu band
-  };
 
   const desktopLinkClass =
     "text-[0.7rem] sm:text-xs font-semibold tracking-[0.25em] uppercase text-cyan-200 hover:text-cyan-400 transition-all duration-300 hover:drop-shadow-sm";
@@ -37,36 +23,40 @@ const Navbar = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo / Brand */}
-          <button
-            onClick={(e) => handleScroll(e, "home")}
+          <NavLink
+            to="/"
+            end
+            onClick={() => setOpen(false)}
             className="flex items-center group"
-            type="button"
           >
             <span className="text-cyan-300 hover:text-cyan-100 text-lg sm:text-xl font-bold tracking-[0.35em] uppercase drop-shadow-[0_0_10px_rgba(34,211,238,0.8)] group-hover:drop-shadow-[0_0_15px_rgba(34,211,238,1)] transition-all duration-300">
               Mindbridge Tech
             </span>
-          </button>
+          </NavLink>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             {NAV_ITEMS.map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                onClick={(e) => handleScroll(e, item.id)}
-                className={desktopLinkClass}
+              <NavLink
+                key={item.to}
+                to={item.to}
+                end={item.end}
+                onClick={() => setOpen(false)}
+                className={({ isActive }) =>
+                  `${desktopLinkClass} ${isActive ? "text-cyan-400" : ""}`
+                }
               >
                 {item.label}
-              </a>
+              </NavLink>
             ))}
 
-            <button
-              type="button"
-              onClick={(e) => handleScroll(e, "contact")}
+            <NavLink
+              to="/contact"
+              onClick={() => setOpen(false)}
               className="ml-4 rounded-full border-2 border-cyan-400/80 px-6 py-2 text-[0.7rem] sm:text-xs font-bold tracking-[0.35em] uppercase text-cyan-200 shadow-[0_0_20px_rgba(34,211,238,0.6)] hover:bg-cyan-500/20 hover:border-cyan-300 hover:shadow-[0_0_30px_rgba(34,211,238,0.9)] transition-all duration-300"
             >
               Get Started
-            </button>
+            </NavLink>
           </div>
 
           {/* Mobile Menu Button */}
@@ -102,23 +92,24 @@ const Navbar = () => {
         <div className="md:hidden border-t border-cyan-400/50 bg-black/95 backdrop-blur-md">
           <div className="px-4 pt-4 pb-6 space-y-3">
             {NAV_ITEMS.map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
+              <NavLink
+                key={item.to}
+                to={item.to}
+                end={item.end}
                 className={mobileLinkClass}
-                onClick={(e) => handleScroll(e, item.id)}
+                onClick={() => setOpen(false)}
               >
                 {item.label}
-              </a>
+              </NavLink>
             ))}
 
-            <button
-              type="button"
-              onClick={(e) => handleScroll(e, "contact")}
+            <NavLink
+              to="/contact"
+              onClick={() => setOpen(false)}
               className="mt-4 w-full rounded-2xl border-2 border-cyan-400/80 px-6 py-3 text-[0.8rem] font-bold tracking-[0.35em] uppercase text-cyan-200 shadow-[0_0_20px_rgba(34,211,238,0.6)] hover:bg-cyan-500/30 hover:border-cyan-300 hover:shadow-[0_0_35px_rgba(34,211,238,1)] transition-all duration-300"
             >
               Get Started
-            </button>
+            </NavLink>
           </div>
         </div>
       )}

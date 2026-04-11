@@ -1,231 +1,207 @@
-// src/components/PortfolioSection.jsx
+import React from "react";
+import { ArrowUpRight, Terminal, Layout, Share2, Rocket } from "lucide-react";
+
+/**
+ * Vaporwave / Outrun Portfolio Component
+ * Aesthetic: 80s Retro-futurism, Neon Grids, Terminal Windows
+ * Palette: Cyan, Blue, Purple (Mindbridge Theme)
+ */
 
 const PROJECTS = [
   {
     id: 1,
-    label: "Mission 01 · Investment Venture",
-    name: "Mahesh Ventures",
-    desc: "A real estate investment venture focused on premium plots and residential projects, offering curated opportunities for long–term growth.",
-    industry: "Real Estate & Investments",
-    scope: "Branding · Website · Lead Funnel",
-    url: "https://maheshventures.in/",
+    name: "Prajapati Enterprises",
+    host: "prajapatienterprises.in",
+    desc: "A business presence website focused on credibility, clear service messaging, and enquiry-first user journeys.",
+    url: "https://prajapatienterprises.in/",
+    icon: Rocket,
+    tone: "cyan",
   },
   {
     id: 2,
-    label: "Mission 02 · Land Marketplace",
-    name: "LandBazar",
-    desc: "A digital marketplace for buying and selling plots and land parcels, built to make discovery, verification and closure faster and more transparent.",
-    industry: "Property Marketplace",
-    scope: "UX/UI · Website · Listing System",
-    url: "http://landbazar.in/",
+    name: "Risevo",
+    host: "risevo.in",
+    desc: "A brand-first site with bold visuals and a clean layout to communicate services and capture leads.",
+    url: "https://www.risevo.in/",
+    icon: Layout,
+    tone: "purple",
   },
   {
     id: 3,
-    label: "Mission 03 · Advisory",
-    name: "DDC Consultancy",
-    desc: "A consulting firm providing end–to–end advisory for real estate and business, with a clean, high–trust digital presence for domestic and NRI clients.",
-    industry: "Consultancy & Advisory",
-    scope: "Corporate Site · Content · Contact Flows",
-    url: "https://ddcconsultancy.in/",
+    name: "Creator The Advertising",
+    host: "creatortheadvertising.in",
+    desc: "A brand-forward website designed to highlight offerings, showcase trust signals, and drive enquiries efficiently.",
+    url: "https://www.creatortheadvertising.in/",
+    icon: Share2,
+    tone: "blue",
   },
   {
     id: 4,
-    label: "Mission 04 · Corporate Site",
-    name: "SR · YashviTech",
-    desc: "A clean, modern corporate website for YashviTech SR, focused on clear service communication and fast performance.",
-    industry: "Technology & Services",
-    scope: "Branding · Website · Contact Flows",
-    url: "https://sr.yashvitech.com/",
-  },
-  {
-    id: 5,
-    label: "Mission 05 · Service Website",
-    name: "P2 Hardware Solution",
-    desc: "A service-focused website for an industrial hardware provider, designed for quick enquiry and trust-building.",
-    industry: "Industrial Hardware & Services",
-    scope: "Website · Product Highlights · Lead Capture",
-    url: "https://p2hardwaresolution.com/",
-  },
-  {
-    id: 6,
-    label: "Mission 06 · ERP Portal",
-    name: "KP Grandsons ERP",
-    desc: "A role-based ERP web portal with a dashboard-style UI for operations, inventory and reporting.",
-    industry: "Business Operations",
-    scope: "Web App UI · Auth Flows · Dashboards",
-    url: "https://erp.kpgrandsons.in/",
-  },
-  {
-    id: 7,
-    label: "Mission 07 · Business Website",
-    name: "Priyanshi Coal Feed",
-    desc: "Business presence website for a coal & feed supplier, built for credibility and smooth enquiry journeys.",
-    industry: "Industrial & Trading",
-    scope: "Corporate Site · Content · Forms",
-    url: "https://priyanshi.coalfeed.in/",
-  },
-  {
-    id: 8,
-    label: "Mission 08 · Brand Site",
-    name: "Risevo",
-    desc: "A brand-first site with bold visuals and a clean layout to communicate services and capture leads.",
-    industry: "Corporate / Startup",
-    scope: "Landing Page · Website · Contact Flows",
-    url: "https://www.risevo.in/",
-  },
-  {
-    id: 9,
-    label: "Mission 09 · Experimental",
-    name: "SS Website (In Progress)",
-    desc: "An experimental, space-themed build exploring new layouts, microinteractions and animations.",
-    industry: "Personal Project",
-    scope: "Design Exploration · Frontend Build",
-    url: "https://ss-website-z1ai.vercel.app/",
-    status: "in-progress",
+    name: "Ryaan Signage",
+    host: "ryaansignages.vercel.app",
+    desc: "Premium signage solutions featuring high-end visual identities, neon displays, and architectural branding.",
+    url: "https://ryaansignages.vercel.app/",
+    icon: Terminal,
+    tone: "cyan",
   },
 ];
 
-function ProjectCard({ project }) {
-  const shortDesc =
-    project.desc.length > 110
-      ? project.desc.slice(0, 100) + "..."
-      : project.desc;
+const COLORS = {
+  cyan: "#22d3ee",
+  blue: "#60a5fa",
+  purple: "#a855f7",
+};
 
+function TerminalWindow({ children, title, tone = "cyan" }) {
+  const accent = COLORS[tone];
+  
   return (
-    <article className="relative flex-shrink-0 w-[240px] sm:w-[260px] lg:w-[280px] aspect-square">
-      <div className="group relative h-full w-full overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/85 p-[1px] shadow-[0_14px_45px_rgba(15,23,42,0.9)] transition duration-300 hover:-translate-y-1.5 hover:border-cyan-400/70 hover:shadow-[0_0_40px_rgba(34,211,238,0.4)]">
-        <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(56,189,248,0.28),transparent_55%),radial-gradient(circle_at_100%_100%,rgba(168,85,247,0.33),transparent_55%)] opacity-40 mix-blend-screen"
-          aria-hidden="true"
-        />
-
-        <div className="relative flex h-full flex-col rounded-3xl bg-slate-950/95 p-4 backdrop-blur-xl">
-          <div className="flex-1 flex flex-col">
-            <div className="flex items-center justify-between gap-2">
-              <span className="inline-flex items-center rounded-full border border-slate-700 bg-slate-950/80 px-2 py-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.16em] text-slate-300">
-                {project.label}
-              </span>
-
-              {project.status === "in-progress" && (
-                <span className="inline-flex items-center gap-1 rounded-full bg-amber-500/10 px-2 py-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.16em] text-amber-300 motion-safe:animate-pulse">
-                  <span className="h-1.5 w-1.5 rounded-full bg-amber-300" />
-                  In Progress
-                </span>
-              )}
-            </div>
-
-            <h3 className="mt-2 text-sm sm:text-[0.9rem] font-semibold text-slate-50">
-              {project.name}
-            </h3>
-
-            <p className="mt-1.5 text-[0.7rem] leading-relaxed text-slate-400">
-              {shortDesc}
-            </p>
-
-            <dl className="mt-2 space-y-0.5 text-[0.65rem] text-slate-400">
-              <div className="flex gap-1.5">
-                <dt className="font-medium text-slate-200 whitespace-nowrap">
-                  Industry:
-                </dt>
-                <dd className="truncate">{project.industry}</dd>
-              </div>
-              <div className="flex gap-1.5">
-                <dt className="font-medium text-slate-200 whitespace-nowrap">
-                  Scope:
-                </dt>
-                <dd className="truncate">{project.scope}</dd>
-              </div>
-            </dl>
+    <div className="group relative">
+      {/* Perspective Glow Shadow */}
+      <div 
+        className="absolute -inset-1 opacity-20 blur-xl transition-opacity duration-500 group-hover:opacity-40" 
+        style={{ backgroundColor: accent }}
+      />
+      
+      {/* Terminal Container */}
+      <div className="relative border-2 border-white/10 bg-black/80 backdrop-blur-xl transition-transform duration-300 hover:-translate-y-2"
+        style={{ borderTopColor: accent }}
+      >
+        {/* Title Bar */}
+        <div className="flex items-center justify-between border-b border-white/10 px-4 py-2 bg-white/5">
+          <div className="flex gap-1.5">
+            <div className="h-2 w-2 rounded-full bg-red-500/80" />
+            <div className="h-2 w-2 rounded-full bg-amber-500/80" />
+            <div className="h-2 w-2 rounded-full bg-emerald-500/80" />
           </div>
-
-          <div className="mt-3 flex items-end justify-between gap-3">
-            <a
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full border border-slate-600 bg-slate-900/90 px-3 py-1.5 text-[0.6rem] font-semibold uppercase tracking-[0.16em] text-slate-100 transition hover:border-cyan-400 hover:bg-gradient-to-r hover:from-cyan-500/20 hover:to-purple-500/20 hover:text-white"
-            >
-              View Site
-              <svg
-                className="h-3 w-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                viewBox="0 0 20 20"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M5 15L15 5M8 5H15V12"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </a>
-
-            <div className="relative h-5 w-5">
-              <div className="absolute inset-0 rounded-full border border-cyan-400/40 opacity-60" />
-              <div className="absolute inset-1 rounded-full bg-cyan-400/70 blur-[2px] group-hover:animate-ping" />
-            </div>
-          </div>
+          <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-white/40">
+            {title}
+          </span>
         </div>
-      </div>
-    </article>
-  );
-}
 
-function MarqueeRow({ projects }) {
-  return (
-    <div className="marquee">
-      <div className="marquee__inner">
-        {projects.concat(projects).map((project, index) => (
-          <ProjectCard key={`${project.id}-${index}`} project={project} />
-        ))}
+        {children}
       </div>
     </div>
   );
 }
 
+function VaporBtn({ to, tone = "cyan", children }) {
+  const accent = COLORS[tone];
+  return (
+    <a
+      href={to}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="relative -skew-x-12 transform border-2 px-5 py-2 transition-all hover:skew-x-0 group"
+      style={{ borderColor: accent, color: accent }}
+    >
+      <div className="absolute inset-0 bg-white/0 transition-colors group-hover:bg-cyan-400 group-hover:text-black" 
+        style={{ backgroundColor: `${accent}00` }}
+      />
+      <span className="relative inline-block skew-x-12 transform font-mono text-[10px] font-black uppercase tracking-widest group-hover:skew-x-0 group-hover:text-black">
+        {children}
+      </span>
+    </a>
+  );
+}
+
 export default function PortfolioSection() {
   return (
-    <section
-      id="portfolio"
-      className="relative overflow-hidden bg-slate-950 py-20 px-4 sm:px-6 lg:px-8"
-    >
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div
-          className="
-            absolute inset-0 
-            bg-[radial-gradient(circle_at_1px_1px,#1f2937_1px,transparent_0)]
-            [background-size:30px_30px]
-            opacity-40
-          "
-          aria-hidden="true"
-        />
-        <div className="absolute -left-32 -top-40 h-72 w-72 rounded-full bg-cyan-500/30 blur-3xl" />
-        <div className="absolute right-[-6rem] top-1/3 h-80 w-80 rounded-full bg-purple-500/25 blur-3xl" />
-        <div className="absolute -bottom-40 left-1/3 h-80 w-80 rounded-full bg-sky-700/30 blur-3xl" />
-        <div className="absolute left-1/2 top-10 h-64 w-64 -translate-x-1/2 rounded-full border border-slate-700/60 opacity-40" />
-        <div className="absolute left-1/2 top-16 h-40 w-40 -translate-x-1/2 rounded-full border border-cyan-500/40 opacity-40 motion-safe:animate-pulse" />
-        <div className="absolute -right-6 top-16 h-16 w-16 rounded-full border border-cyan-500/50 bg-cyan-500/20 blur-[1px] motion-safe:animate-ping" />
+    <section className="relative bg-[#050508] py-24 px-4 sm:px-8 font-mono">
+      {/* Global Style Imports */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+        
+        .grid-perspective {
+          perspective: 1000px;
+        }
+        
+        .grid-floor {
+          background-image: 
+            linear-gradient(transparent 95%, rgba(168, 85, 247, 0.2) 95%), 
+            linear-gradient(90deg, transparent 95%, rgba(34, 211, 238, 0.2) 95%);
+          background-size: 50px 50px;
+          transform: rotateX(60deg);
+          transform-origin: top center;
+        }
+
+        .heading-glow {
+          text-shadow: 0 0 15px rgba(34, 211, 238, 0.5), 0 0 30px rgba(168, 85, 247, 0.3);
+        }
+      `}</style>
+
+      {/* Retro Grid Background */}
+      <div className="pointer-events-none absolute inset-0 grid-perspective">
+        <div className="absolute inset-0 grid-floor h-[200%] top-[-50%]" />
+        
+        {/* Massive Neon Sun Background */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[500px] w-[500px] rounded-full bg-gradient-to-b from-[#f472b6]/10 to-[#a855f7]/0 blur-[120px]" />
       </div>
 
-      <div className="relative mx-auto max-w-6xl">
-        <div className="mx-auto mb-10 max-w-2xl text-center">
-          <p className="inline-flex items-center justify-center rounded-full border border-slate-600/60 bg-slate-900/80 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-cyan-400">
-            Portfolio · Recent Missions
-          </p>
-
-          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-50 sm:text-4xl">
-            SITES LAUNCHED FROM OUR SPACE STATION
+      <div className="relative mx-auto max-w-7xl">
+        {/* Vaporwave Header */}
+        <div className="mb-20 text-center">
+          <div className="inline-block border-2 border-cyan-400/30 bg-cyan-400/5 px-4 py-1.5 mb-6 text-[10px] font-bold uppercase tracking-[0.4em] text-cyan-300">
+            {">"} CLIENT SUCCESS // ARCHIVE
+          </div>
+          
+          <h2 className="heading-glow font-['Orbitron'] text-5xl sm:text-7xl lg:text-8xl font-black uppercase leading-tight tracking-tighter text-white">
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500">
+              View Our
+            </span>
+            <span className="block">Work</span>
           </h2>
-
-          <p className="mt-3 text-sm text-slate-400 sm:text-base">
-            Hand-crafted, production-ready websites and web apps – each project
-            is a different star in this galaxy.
+          
+          <p className="mt-8 mx-auto max-w-2xl text-xs sm:text-sm uppercase tracking-[0.2em] text-white/50 leading-loose">
+            Selected projects delivered with precision. // High-performance builds for ambitious teams.
           </p>
         </div>
 
-        <MarqueeRow projects={PROJECTS} />
+        {/* Project Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {PROJECTS.map((project) => {
+            const Icon = project.icon;
+            const accent = COLORS[project.tone];
+            
+            return (
+              <TerminalWindow key={project.id} title={project.host} tone={project.tone}>
+                <div className="p-6">
+                  <div className="mb-6 inline-flex h-12 w-12 items-center justify-center border-2 border-white/5 bg-white/5"
+                    style={{ color: accent }}
+                  >
+                    <Icon size={24} />
+                  </div>
+                  
+                  <h3 className="mb-3 font-['Orbitron'] text-xl font-bold uppercase tracking-wide text-white"
+                    style={{ textShadow: `0 0 10px ${accent}44` }}
+                  >
+                    {project.name}
+                  </h3>
+                  
+                  <p className="mb-8 text-[11px] leading-relaxed text-white/50 uppercase tracking-wider">
+                    {project.desc}
+                  </p>
+                  
+                  <VaporBtn to={project.url} tone={project.tone}>
+                    Access Link
+                  </VaporBtn>
+                </div>
+              </TerminalWindow>
+            );
+          })}
+        </div>
+
+        {/* Footer HUD line */}
+        <div className="mt-24 border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-[10px] uppercase tracking-[0.3em] text-white/30">
+          <div className="flex gap-8">
+            <span>LOC: RAIPUR_HQ</span>
+            <span>OS: MINDBRIDGE_v2.0</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span>ALL_SYSTEMS_OPERATIONAL</span>
+          </div>
+        </div>
       </div>
     </section>
   );
